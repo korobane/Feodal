@@ -16,6 +16,8 @@ public class Feodal extends Application
     private Stage rootStage;
     private BorderPane rootView;
     private BorderPane boardView;
+    protected Dice firstDice;
+    protected Dice secondDice;
 
     @Override
     public void start(Stage rootStage) throws Exception
@@ -25,10 +27,8 @@ public class Feodal extends Application
         initRootView();
         initBoardView();
         rootView.setCenter(boardView);
+
         showScene();
-
-
-
     }
 
 
@@ -50,6 +50,9 @@ public class Feodal extends Application
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Feodal.class.getResource("BoardView.fxml"));
             boardView = (BorderPane) loader.load();
+            BoardController boardController = loader.getController();
+            createDices();
+            boardController.setFeodalGame(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,10 +67,17 @@ public class Feodal extends Application
 
     }
 
+    public void createDices ()
+    {
+        this.firstDice = new Dice();
+        this.secondDice = new Dice();
+    }
+
     public static void main( String[] args) throws Exception
     {
+
         launch(args);
-        Dice firstDice = new Dice();
+
 
     }
 

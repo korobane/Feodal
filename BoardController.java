@@ -8,11 +8,48 @@ import javafx.event.ActionEvent;
  */
 public class BoardController {
 
-    @FXML private Label diceSide;
+    @FXML private Label diceSideLabelFirst;
+    @FXML private Label diceSideLabelSecond;
+    Feodal feodalGame;
 
     @FXML protected void changeBoardLabel(ActionEvent event)
     {
+        String labelText = "n/a";
+        switch (feodalGame.firstDice.rollDice()){
+            case ONE:   labelText = "One";
+                break;
+            case TWO:   labelText = "Two";
+                break;
+            case THREE: labelText = "Three";
+                break;
+            case FOUR:  labelText = "Four";
+                break;
+            case FIVE:  labelText = "Five";
+                break;
+            case SIX:   labelText = "Six";
+                break;
+        }
+        diceSideLabelFirst.setText(labelText);
 
-        diceSide.setText("New text");
+        switch (feodalGame.secondDice.rollDice()){
+            case ONE:   labelText = "One";
+                break;
+            case TWO:   labelText = "Two";
+                break;
+            case THREE: labelText = "Three";
+                break;
+            case FOUR:  labelText = "Four";
+                break;
+            case FIVE:  labelText = "Five";
+                break;
+            case SIX:   labelText = "Six";
+                break;
+        }
+        diceSideLabelSecond.setText(labelText);
+    }
+
+    public void setFeodalGame(Feodal feodalGame)
+    {
+        this.feodalGame = feodalGame;
     }
 }

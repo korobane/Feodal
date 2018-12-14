@@ -17,9 +17,10 @@ public class Dice {
         return currentSide;
     }
 
-    public static  DiceSide rollDice()
+    public DiceSide rollDice()
     {
      int a = (int) ( Math.random() * 6 );
-     return DiceSide.values()[(int) (a)];
+     currentSide =  DiceSide.values()[(int) (a)];
+     return  currentSide;
     }
 }
